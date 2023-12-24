@@ -1,14 +1,20 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import Header from "./Header";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import MainContainer from "./MainContsainer";
+import SecondaryContainer from "./SecondaryContainer";
+
 
 const Browse = () => {
 
-  return (
-    <div className="flex justify-between">
-      <Header />
+  useNowPlayingMovies();
 
-      
+
+  return (
+    <div className="flex justify-between bg-gray-200">
+      <Header />
+      <MainContainer />
+      <SecondaryContainer />
     </div>
   );
 };

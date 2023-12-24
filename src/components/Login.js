@@ -107,12 +107,14 @@ const Login = () => {
         )}
         <input
           ref={email}
+          value={"chetankandala2017@gmail.com"}
           type="text"
           placeholder="Email Address"
           className="p-4 my-4 w-full bg-gray-700"
         />
         <input
           ref={password}
+          value={"Abcdgfbf@123"}
           type="password"
           placeholder="Password"
           className="p-4 my-4 w-full bg-gray-700"
