@@ -1,60 +1,138 @@
-import React, { useState } from 'react';
-import Header from './Header';
+import { useState, useRef } from "react";
+import Header from "./Header";
+import { validateUser } from "../utils/validation";
+import { auth } from "../utils/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
-    const [toggle, setToggle] = useState(true);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isSignInForm, setIsSignInForm] = useState(true);
+  const [showerror, setshowerror] = useState("");
 
-    function toggleSignUp() {
-        setToggle(!toggle);
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+  const onclicklistener = () => {
+    const error = validateUser(email.current.value, password.current.value);
+
+    setshowerror(error);
+
+    if (error) {
+      return;
     }
 
-    return (
-        <div>
-            <Header />
-            <div className='absolute'>
-                <img className='w-[100vw] h-[100vh]'
-                    src='https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_small.jpg'
-                    alt=''
-                />
-            </div>
-            <div className='h-screen flex flex-col items-center justify-center'>
-                <form className='absolute mt-20 p-14 bg-black w-1/3 bg-opacity-80'>
-                    <h1 className='text-white font-bold text-3xl py-4'>
-                        {toggle ? 'Sign In' : 'Sign Up'}
-                    </h1>
-                    {toggle && (
-                        <input
-                            className='rounded-lg my-4 p-4 w-full bg-gray-700'
-                            type='text'
-                            placeholder='Name of User'
-                        />
-                    )}
-                    <br />
-                    <input
-                        className='rounded-lg my-4 p-4 w-full bg-gray-700'
-                        type='email'
-                        placeholder='Email or Phone Number'
-                    />
-                    <br />
-                    <input
-                        className='rounded-lg my-4 p-4 w-full bg-gray-700'
-                        type='password'
-                        placeholder='Password'
-                    />
-                    <br />
-                    <button className='my-6 p-4 w-full rounded-lg bg-red-600 text-white font-semibold'>
-                        {toggle ? 'Sign In' : 'Sign Up'}
-                    </button>
-                    <input type='checkbox' name='' id='' />
-                    <p className='cursor-pointer py-4 text-white' onClick={toggleSignUp}>
-                        {toggle
-                            ? ' New to Netflix ? Sign Up Now'
-                            : 'Already signed up ? Sign Up Now'}
-                    </p>
-                </form>
-            </div>
-        </div>
-    );
-};
+    if (!isSignInForm) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value
+          }).then(() => {
 
+            const { displayName, email, uid } = auth.currentUser;
+            dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+            // Profile updated!
+            // ...
+          }).catch((error) => {
+            // An error occurred
+            // ...
+          });
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setshowerror(errorMessage);
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          navigate("/browse");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+    }
+  };
+
+  const toggleSignInForm = () => {
+    setIsSignInForm(!isSignInForm);
+  };
+  return (
+    <div>
+      <Header />
+      <div className="absolute">
+        <img
+          className="h-screen w-screen object-cover"
+          src={
+            "https://assets.nflxext.com/ffe/siteui/vlv3/ca6a7616-0acb-4bc5-be25-c4deef0419a7/c5af601a-6657-4531-8f82-22e629a3795e/IN-en-20231211-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          }
+          alt="logo"
+        />
+      </div>
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="w-full md:w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
+      >
+        <h1 className="font-bold text-3xl py-4">
+          {isSignInForm ? "Sign In" : "Sign Up"}
+        </h1>
+
+        {!isSignInForm && (
+          <input
+            ref={name}
+            type="text"
+            placeholder="Full Name"
+            className="p-4 my-4 w-full bg-gray-700"
+          />
+        )}
+        <input
+          ref={email}
+          type="text"
+          placeholder="Email Address"
+          className="p-4 my-4 w-full bg-gray-700"
+        />
+        <input
+          ref={password}
+          type="password"
+          placeholder="Password"
+          className="p-4 my-4 w-full bg-gray-700"
+        />
+        <p className="font-bold text-red-600">{showerror}</p>
+        <button
+          className="p-4 my-6 bg-red-700 w-full rounded-lg"
+          onClick={() => {
+            onclicklistener();
+          }}
+        >
+          {isSignInForm ? "Sign In" : "Sign Up"}
+        </button>
+        <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
+          {isSignInForm
+            ? "New to Netflix? Sign Up Now"
+            : "Already registered? Sign In Now."}
+        </p>
+      </form>
+    </div>
+  );
+};
 export default Login;
