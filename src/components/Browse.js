@@ -11,7 +11,7 @@ const Browse = () => {
 
 
   return (
-    <div className="flex justify-between bg-gray-200">
+    <div className=" justify-between bg-black ">
       <Header />
       <MainContainer />
       <SecondaryContainer />
