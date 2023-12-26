@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Moviecard = ({image,id,title,overview}) => {
+const Moviecard = ({ image, id, title, overview }) => {
   return (
-    <div className=' w-[300px] '>
-      <img className='rounded-md' src={'https://image.tmdb.org/t/p/w500'+image}></img>
-    </div>
+    <Link to={"/content/"+id}>
+      <div className=' w-[200px] '>
+        <img className='rounded-md' src={'https://www.themoviedb.org/t/p/w220_and_h330_face/' + image}></img>
+      </div>
+    </Link>
   )
 }
 
