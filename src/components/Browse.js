@@ -10,8 +10,9 @@ const Browse = () => {
   useNowPlayingMovies();
 
 
+
   return (
-    <div className=" justify-between bg-black gap-y-2">
+    <div className=" justify-between bg-black gap-y-2 ">
       <Header />
       <MainContainer />
       <SecondaryContainer />

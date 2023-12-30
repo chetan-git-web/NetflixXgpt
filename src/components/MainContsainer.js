@@ -11,6 +11,9 @@ const MainContainer = () => {
 
     return (
         <div className="-mb-20">
+            {
+                console.log("hellooooooooooooooooooooo")
+            }
             <VideoTitle title={original_title} text={overview} id={id} />
             <VideoBackground id={id} image={backdrop_path} />
         </div>

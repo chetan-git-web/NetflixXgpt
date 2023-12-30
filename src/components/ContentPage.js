@@ -12,7 +12,6 @@ const ContentPage = () => {
     const trailerFetcher = async () => {
       const data = await fetch("https://api.themoviedb.org/3/movie/" + id + "/videos?language=en-US", API_CALL)
       const json = await data.json();
-      console.log(json);
 
       if(json.results.length==0){
         setmovie("NotAvailable");

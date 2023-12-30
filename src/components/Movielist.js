@@ -9,7 +9,6 @@ const Movieslist = ({number,string}) => {
       const data = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page='+number, API_CALL)
       const json = await data.json();
       setmovieslist(json.results);
-      console.log(json);
 
     }
     movies();

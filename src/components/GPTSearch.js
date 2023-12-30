@@ -11,14 +11,12 @@ const GPTSearch = () => {
         const moviessearh = async () => {
             const data = await fetch('https://api.themoviedb.org/3/search/movie?query=' + Value + '&include_adult=false&language=en-US&page=1', API_CALL);
             const json = await data.json();
-            console.log(json);
             setmovieslist(json.results);
-            console.log(movielist);
         }
         moviessearh();
     }, [Value])
 
-    return (<div className='absolute  w-screen h-screen'>
+    return (<div className='absolute  w-full h-screen overflow-hidden'>
 
         <div className="absolute">
             <img
@@ -29,7 +27,7 @@ const GPTSearch = () => {
                 alt="logo"
             />
         </div>
-        <Header/>
+        <Header />
 
         <div className="relative mx-[210px] mr-[240px] mt-[120px]">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -61,7 +59,7 @@ const GPTSearch = () => {
             <button
                 type="submit"
                 className="text-white absolute right-2.5 bottom-2.5 bg-red-700 hover:bg-red-800  font-medium rounded-lg text-sm px-4 py-2 "
-                
+
 
             >
                 Search
