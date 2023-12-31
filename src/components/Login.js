@@ -78,22 +78,23 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
   return (
-    <div>
+    <div className=" bg-black">
+      <div className="absolute bg-black">
+            <img
+                className="h-screen w-screen object-cover"
+                src={
+                    "https://assets.nflxext.com/ffe/siteui/vlv3/ca6a7616-0acb-4bc5-be25-c4deef0419a7/c5af601a-6657-4531-8f82-22e629a3795e/IN-en-20231211-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                }
+                alt="logo"
+            />
+        </div>
       <Header />
-      <div className="absolute">
-        <img
-          className="h-screen w-screen object-cover"
-          src={
-            "https://assets.nflxext.com/ffe/siteui/vlv3/ca6a7616-0acb-4bc5-be25-c4deef0419a7/c5af601a-6657-4531-8f82-22e629a3795e/IN-en-20231211-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          }
-          alt="logo"
-        />
-      </div>
+      
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-full md:w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
+        className=" smartphone:w-[390px]  absolute p-12 bg-black  my-[3rem]  desktop:my-[4rem] mx-12 smartphone:mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
       >
-        <h1 className="font-bold text-3xl py-4">
+        <h1 className="font-bold text-2xl smartphone:text-3xl py-1 smartphone:py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
 
@@ -102,7 +103,7 @@ const Login = () => {
             ref={name}
             type="text"
             placeholder="Full Name"
-            className="p-4 my-4 w-full bg-gray-700"
+            className="p-2 smartphone:p-4 smartphone:my-4 w-full bg-gray-700"
           />
         )}
         <input
@@ -110,18 +111,18 @@ const Login = () => {
           value={"chetankandala2017@gmail.com"}
           type="text"
           placeholder="Email Address"
-          className="p-4 my-4 w-full bg-gray-700"
+          className=" p-2 smartphone:p-4 my-4 w-full bg-gray-700"
         />
         <input
           ref={password}
           value={"Abcdgfbf@123"}
           type="password"
           placeholder="Password"
-          className="p-4 my-4 w-full bg-gray-700"
+          className="p-2 smartphone:p-4 my-4 w-full bg-gray-700"
         />
         <p className="font-bold text-red-600">{showerror}</p>
         <button
-          className="p-4 my-6 bg-red-700 w-full rounded-lg"
+          className=" p-2 smartphone:p-4 my-6 bg-red-700 w-full rounded-lg"
           onClick={() => {
             onclicklistener();
           }}

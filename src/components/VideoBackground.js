@@ -16,8 +16,8 @@ const VideoBackground = ({ id, image }) => {
 
 
   return (
-    <div className='w-full h-screen overflow-hidden'>
-    <iframe className=' w-screen aspect-video -mt-32'  src={"https://www.youtube.com/embed/"+movie+"?si=COyO53XZKiQSrQ19&amp;controls=0&amp;start=20&mute=1&autoplay=1&loop=1&showinfo=0"}  frameBorder="0" allow="accelerometer " allowFullScreen></iframe>
+    <div className='w-full h-[10rem] smartphone:h-[14rem] tablet:h-[18rem] laptop:h-[22rem] desktop:h-[36rem] overflow-hidden'>
+    <iframe className=' w-screen aspect-video -mt-12 '  src={"https://www.youtube.com/embed/"+movie+"?si=COyO53XZKiQSrQ19&amp;controls=0&amp;start=20&mute=1&autoplay=1&loop=1&showinfo=0"}  frameBorder="0" allow="accelerometer " allowFullScreen></iframe>
 
     </div>
   )

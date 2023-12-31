@@ -38,16 +38,16 @@ const Header = () => {
   useHeader()
 
   return (
-    <div className='absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-full flex justify-between'>
-      <img className='w-44' src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" />
+    <div className='px-4 smartphone:px-8 py-2 bg-gradient-to-b from-black z-10 w-full flex justify-between sticky top-0'>
+      <img className=' z-20 w-36 smartphone:w-44' src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" />
 
-      {user ? <div className="z-10 m-4 space-x-10">
+      {user ? <div className="z-10 m-4 space-x-6 smartphone:space-x-10">
         <button onClick={() => {
           navigate("/GPTSearch");
-        }} className="relative inline-block text-lg group">
+        }} className="relative inline-block text-lg group ">
           
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0,0,256,256"
-            fill='#FFFFFF'>
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0,0,256,256"
+            fill='#FFFFFF' className='smartphone:w-[40px] smartphone:h-[40px] w-[30px] h-[30px]' >
             <g fill="#ffffff" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none" ><g transform="scale(5.12,5.12)"><path d="M21,3c-9.39844,0 -17,7.60156 -17,17c0,9.39844 7.60156,17 17,17c3.35547,0 6.46094,-0.98437 9.09375,-2.65625l12.28125,12.28125l4.25,-4.25l-12.125,-12.09375c2.17969,-2.85937 3.5,-6.40234 3.5,-10.28125c0,-9.39844 -7.60156,-17 -17,-17zM21,7c7.19922,0 13,5.80078 13,13c0,7.19922 -5.80078,13 -13,13c-7.19922,0 -13,-5.80078 -13,-13c0,-7.19922 5.80078,-13 13,-13z"></path></g></g>
           </svg>
           
@@ -59,20 +59,20 @@ const Header = () => {
           <button
             type="button"
             onClick={toggleDropdown}
-            className="inline-flex justify-center items-center  text-sm font-medium text-gray-700  rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+            className="inline-flex justify-center items-center  text-sm font-medium text-gray-700  rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2  "
           >
-            <img src={'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'} className='w-10 rounded-md'></img>
+            <img src={'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'} className='w-8 smartphone:w-10 rounded-md'></img>
           </button>
 
           {isOpen && (
-            <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+            <div className="origin-top-right absolute right-0 mt-2 w-40 smartphone:w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
               <div className="py-1">
                 <div
                   className="block w-full text-left px-4 py-2 text-sm text-black font-bold "
                 >
                   {user.displayName}
                 </div>
-                <div className="block w-48 text-left px-4 truncate text-sm text-black font-bold ">
+                <div className="block smartphone:w-48 text-left px-4 truncate text-sm text-black font-bold ">
                   {user.email}
                 </div>
                 <div className='w-full h-[1px] bg-gray-500 my-3'>
