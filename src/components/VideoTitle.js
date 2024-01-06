@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const VideoTitle = ({ title, text, id }) => {
   return (
     <div className=" px-12 absolute bg-gradient-to-r from-black w-full aspect-video pt-[2rem] smartphone:pt-[4rem] tablet:pt-[6rem] laptop:pt-[8rem] desktop:pt-[10rem]">
-      <h1 className="text-2xl smartphone:text-3xl tablet:text-4xl laptop:text-5xl desktop:text-6xl font-bold text-white truncate">
+      <h1 className="text-2xl smartphone:text-3xl tablet:text-4xl laptop:text-5xl desktop:text-6xl font-bold text-white truncate py-4">
         {" "}
         {title}
       </h1>

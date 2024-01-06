@@ -38,13 +38,13 @@ const Header = () => {
   useHeader()
 
   return (
-    <div className='px-4 smartphone:px-8 py-2 bg-gradient-to-b from-black z-10 w-full flex justify-between sticky top-0'>
-      <img className=' z-20 w-36 smartphone:w-44' src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" />
+    <div className='px-4  smartphone:px-8 py-2 bg-gradient-to-b from-black z-50 w-full flex justify-between sticky top-0'>
+      <img className=' z-50 w-36 smartphone:w-44' src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" />
 
       {user ? <div className="z-10 m-4 space-x-6 smartphone:space-x-10">
         <button onClick={() => {
           navigate("/GPTSearch");
-        }} className="relative inline-block text-lg group ">
+        }} className="relative z-50 inline-block text-lg group ">
           
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0,0,256,256"
             fill='#FFFFFF' className='smartphone:w-[40px] smartphone:h-[40px] w-[30px] h-[30px]' >
@@ -55,27 +55,27 @@ const Header = () => {
 
 
 
-        <div className="relative inline-block text-left" ref={dropdownRef}>
+        <div className="relative z-50 inline-block text-left" ref={dropdownRef}>
           <button
             type="button"
             onClick={toggleDropdown}
-            className="inline-flex justify-center items-center  text-sm font-medium text-gray-700  rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2  "
+            className="z-50 inline-flex justify-center items-center  text-sm font-medium text-gray-700  rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2  "
           >
             <img src={'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'} className='w-8 smartphone:w-10 rounded-md'></img>
           </button>
 
           {isOpen && (
-            <div className="origin-top-right absolute right-0 mt-2 w-40 smartphone:w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-              <div className="py-1">
+            <div className="z-50 origin-top-right absolute right-0 mt-2 w-40 smartphone:w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+              <div className="z-50 py-1">
                 <div
-                  className="block w-full text-left px-4 py-2 text-sm text-black font-bold "
+                  className="z-50 block w-full text-left px-4 py-2 text-sm text-black font-bold "
                 >
                   {user.displayName}
                 </div>
-                <div className="block smartphone:w-48 text-left px-4 truncate text-sm text-black font-bold ">
+                <div className="z-50 block smartphone:w-48 text-left px-4 truncate text-sm text-black font-bold ">
                   {user.email}
                 </div>
-                <div className='w-full h-[1px] bg-gray-500 my-3'>
+                <div className='z-50 w-full h-[1px] bg-gray-500 my-3'>
                   </div>
                 <button
                   onClick={() => {
@@ -90,7 +90,7 @@ const Header = () => {
 
                     navigate("/");
                   }}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="z-50 block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   SignOut
                 </button>
